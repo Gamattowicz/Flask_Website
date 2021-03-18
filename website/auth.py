@@ -13,7 +13,15 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        return redirect(url_for('views.home'))
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password, password):
+                flash('Logged in successfully!', category='success')
+                return redirect(url_for('views.home'))
+            else:
+                flash('Incorrect password!', category='error')
+        else:
+            flash('Email does not exist!', category='error')
 
     return render_template('login.html')
 
@@ -30,7 +38,11 @@ def signup():
         name = request.form.get('name')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-        if len(email) < 5:
+
+        user = User.query.filter_by(email=email).first()
+        if user:
+            flash('Email already exists!', category='error')
+        elif len(email) < 5:
             flash('Email is too short! Must be greater than 4 characters.',
                   category='error')
         elif len(name) < 2:
@@ -43,8 +55,8 @@ def signup():
                   'characters', category='error')
         else:
             new_user = User(email=email, name=name,
-                            password=generate_password_hash(password1,
-                            method='sha256'))
+                            password=generate_password_hash(
+                            password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             flash('User created successfully!', category='success')
