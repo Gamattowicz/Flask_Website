@@ -7,9 +7,7 @@
     {% if users %}
         {% for user in users %}
         <li class="list-group-item">
-            {{user.id}}
-            {{user.email}}
-            {{user.name}}
+            <p>User ID: {{user.id}} Email: {{user.email}} Name: {{user.name}}</p>
         </li>
         {% endfor %}
     {% endif %}
