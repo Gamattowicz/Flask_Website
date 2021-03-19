@@ -36,8 +36,21 @@ def delete_note():
     return jsonify({})
 
 
-@views.route('/user-list')
+@views.route('/user-list', methods=['GET', 'POST'])
 @login_required
 def user_list():
     return render_template('user_list.html', user=current_user,
                            users=User.query.all())
+
+
+@views.route('/delete-user', methods=['POST'])
+def delete_user():
+    user = json.loads(request.data)
+    userId = user['userId']
+    user = User.query.get(userId)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        flash('User created successfully!', category='success')
+
+    return jsonify({})

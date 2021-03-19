@@ -19,8 +19,12 @@
                 <div class="col">{{user.id}}</div>
                 <div class="col">{{user.email}}</div>
                 <div class="col">{{user.name}}</div>
+                <button type="button" class="close" onClick="deleteUser({{ user.id }})">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         </div>
+
         {% endfor %}
     {% endif %}
 </ul>
