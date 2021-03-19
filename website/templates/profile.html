@@ -6,19 +6,19 @@
     <h2 align="center">Profile</h2>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Change your email">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Change your email" value="{{email if email}}">
     </div>
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Change your name">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Change your name" value="{{name if name}}">
     </div>
     <div class="form-group">
         <label for="country">Country</label>
-        <input type="text" class="form-control" id="country" name="country" placeholder="Enter your country">
+        <input type="text" class="form-control" id="country" name="country" placeholder="Enter your country" value="{{country if country}}">
     </div>
     <div class="form-group">
         <label for="city">City</label>
-        <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city">
+        <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city" value="{{city if city}}">
     </div>
     <br>
     <button type="submit" class="btn btn-primary">Confirm</button>

@@ -94,4 +94,8 @@ def profile():
             flash('Profile has been updated!', category='success')
             return redirect(url_for('views.home'))
 
-    return render_template('profile.html', user=current_user)
+    return render_template('profile.html', user=current_user,
+                           email=current_user.email,
+                           name=current_user.name,
+                           country=current_user.country,
+                           city=current_user.city)
