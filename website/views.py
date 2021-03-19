@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, \
+    redirect, url_for
 from flask_login import login_required, current_user
 from .models import Note, User
 from . import db
@@ -54,3 +55,43 @@ def delete_user():
         flash('User created successfully!', category='success')
 
     return jsonify({})
+
+
+@views.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        name = request.form.get('name')
+        country = request.form.get('country')
+        city = request.form.get('city')
+
+        user = User.query.filter_by(email=current_user.email).first()
+        if email == user.email:
+            flash('Emails are the same!', category='error')
+        elif len(email) < 5:
+            flash('Email is too short! Must be greater than 4 characters.',
+                  category='error')
+        elif name == user.name:
+            flash('Names are the same!', category='error')
+        elif len(name) < 2:
+            flash('Name is too short! Must be greater than 1 character.',
+                  category='error')
+        elif country == user.country:
+            flash('Countries are the same!', category='error')
+        elif len(country) < 2:
+            flash('Country is not correct', category='error')
+        elif city == user.city:
+            flash('Cities are the same!', category='error')
+        elif len(city) < 2:
+            flash('City is not correct', category='error')
+        else:
+            user.email = email
+            user.name = name
+            user.country = country
+            user.city = city
+            db.session.commit()
+            flash('Profile has been updated!', category='success')
+            return redirect(url_for('views.home'))
+
+    return render_template('profile.html', user=current_user)
