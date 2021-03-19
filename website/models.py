@@ -16,3 +16,5 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(100))
     name = db.Column(db.String(100))
     notes = db.relationship('Note')
+    country = db.Column(db.String(50))
+    city = db.Column(db.String(50))

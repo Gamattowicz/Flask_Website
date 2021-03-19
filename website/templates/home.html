@@ -5,6 +5,7 @@
 <h1 align="center">Notes</h1>
 <ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
+<!--    add date of creation notes-->
     <li class="list-group-item">
         {{ note.content }}
         <button type="button" class="close" onClick="deleteNote({{ note.id }})">

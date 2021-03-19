@@ -9,6 +9,8 @@
             <div class="col">User ID</div>
             <div class="col">Email</div>
             <div class="col">Name</div>
+            <div class="col">Country</div>
+            <div class="col">City</div>
         </div>
     </div>
     <br>
@@ -19,6 +21,16 @@
                 <div class="col">{{user.id}}</div>
                 <div class="col">{{user.email}}</div>
                 <div class="col">{{user.name}}</div>
+                {% if user.country %}
+                    <div class="col">{{user.country}}</div>
+                {% else %}
+                    <div class="col"></div>
+                {% endif %}
+                {% if user.city %}
+                    <div class="col">{{user.city}}</div>
+                {% else %}
+                    <div class="col"></div>
+                {% endif %}
                 <button type="button" class="close" onClick="deleteUser({{ user.id }})">
                 <span aria-hidden="true">&times;</span>
                 </button>
