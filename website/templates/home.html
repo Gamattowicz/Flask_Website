@@ -3,17 +3,33 @@
 
 {% block content %}
 <h1 align="center">Notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
-<!--    add date of creation notes-->
-    <li class="list-group-item">
-        {{ note.content }}
-        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </li>
-    {% endfor %}
-</ul>
+<br>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Content of the note</th>
+                <th scope="col">Date of modification</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <thody>
+            {% for note in user.notes %}
+            <tr>
+                <th scope="row">{{note.id}}</th>
+                <td>{{ note.content }}</td>
+                <td>{{ note.date }}</td>
+                <td><button type="button" class="close" onClick="deleteNote({{ note.id }})">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </thody>
+    </table>
+</div>
+
 <form method="POST">
     <textarea name="note" class="form-control" id="note"></textarea>
     <br>
