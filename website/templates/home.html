@@ -5,22 +5,22 @@
 <h1 align="center">Notes</h1>
 <br>
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered ">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Content of the note</th>
-                <th scope="col">Date of modification</th>
-                <th scope="col"></th>
+                <th class="border border-dark" scope="col">#</th>
+                <th class="border border-dark" scope="col">Content of the note</th>
+                <th class="border border-dark" scope="col">Date of modification</th>
+                <th class="border border-dark" scope="col"></th>
             </tr>
         </thead>
         <thody>
             {% for note in user.notes %}
-            <tr>
-                <th scope="row">{{note.id}}</th>
-                <td>{{ note.content }}</td>
-                <td>{{ note.date }}</td>
-                <td><button type="button" class="close" onClick="deleteNote({{ note.id }})">
+            <tr class="table-secondary">
+                <th class="border border-dark" scope="row">{{note.id}}</th>
+                <td class="border border-dark">{{ note.content }}</td>
+                <td class="border border-dark">{{ note.date }}</td>
+                <td class="border border-dark"><button type="button" class="close" onClick="deleteNote({{ note.id }})">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </td>
