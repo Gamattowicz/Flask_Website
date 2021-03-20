@@ -3,41 +3,44 @@
 
 {% block content %}
 <h1 align="center">User list</h1>
-<ul class="list-group list-group-flush" id="userlist">
-    <div class="container">
-        <div class="row">
-            <div class="col">User ID</div>
-            <div class="col">Email</div>
-            <div class="col">Name</div>
-            <div class="col">Country</div>
-            <div class="col">City</div>
-        </div>
-    </div>
-    <br>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Country</th>
+            <th scope="col">City</th>
+            <th></th>
+        </tr>
+    </thead>
+    <thody>
+        <tr>
     {% if users %}
         {% for user in users %}
-        <div class="container">
-            <div class="row">
-                <div class="col">{{user.id}}</div>
-                <div class="col">{{user.email}}</div>
-                <div class="col">{{user.name}}</div>
+                <th scopre="row">{{user.id}}</th>
+                <td>{{user.email}}</td>
+                <td>{{user.name}}</td>
                 {% if user.country %}
-                    <div class="col">{{user.country}}</div>
+                    <td>{{user.country}}</td>
                 {% else %}
-                    <div class="col"></div>
+                    <td></td>
                 {% endif %}
                 {% if user.city %}
-                    <div class="col">{{user.city}}</div>
+                    <td>{{user.city}}</td>
                 {% else %}
-                    <div class="col"></div>
+                    <td class="col"></td>
                 {% endif %}
-                <button type="button" class="close" onClick="deleteUser({{ user.id }})">
+                <td><button type="button" class="close" onClick="deleteUser({{ user.id }})">
                 <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
+                </td>
         </div>
-
+        </tr>
+    </thody>
         {% endfor %}
     {% endif %}
 </ul>
+</table>
 {% endblock %}
