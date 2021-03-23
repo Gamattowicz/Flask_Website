@@ -37,6 +37,12 @@ def delete_note():
     return jsonify({})
 
 
+@views.route('/edit-note', methods=['POST', 'GET'])
+def edit_note():
+
+    return render_template('edit_note.html', user=current_user)
+
+
 @views.route('/user-list', methods=['GET', 'POST'])
 @login_required
 def user_list():
