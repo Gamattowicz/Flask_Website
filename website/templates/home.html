@@ -12,6 +12,7 @@
                 <th class="border border-dark" scope="col">Content of the note</th>
                 <th class="border border-dark" scope="col">Date of modification</th>
                 <th class="border border-dark" scope="col"></th>
+                <th class="border border-dark" scope="col"></th>
             </tr>
         </thead>
         <thody>
@@ -20,8 +21,12 @@
                 <th class="border border-dark" scope="row">{{note.id}}</th>
                 <td class="border border-dark">{{ note.content }}</td>
                 <td class="border border-dark">{{ note.date }}</td>
-                <td class="border border-dark"><button type="button" class="close" onClick="deleteNote({{ note.id }})">
-                    <span aria-hidden="true">&times;</span>
+                <td class="border border-dark text-center">
+                    <button type="button" class="btn btn-outline-success">
+                    <span aria-hidden="true">EDIT</span></button></td>
+                <td class="border border-dark text-center">
+                    <button type="button" class="close text-danger" onClick="deleteNote({{ note.id }})">
+                    <span aria-hidden="true " class="text-center">&times;</span>
                     </button>
                 </td>
             </tr>
