@@ -33,9 +33,9 @@
                         {% else %}
                             <td></td>
                         {% endif %}
-                        <td><button type="button" class="close" onClick="deleteUser({{ user.id }})">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+                        <td><button type="button" class="close text-danger" onClick="deleteUser({{ user.id }})">
+                        <span aria-hidden="true ">&times;</span>
+                    </button>
                         </td>
                  </tr>
                 {% endfor %}
