@@ -3,6 +3,8 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 
 db = SQLAlchemy()
@@ -14,6 +16,7 @@ def create_app():
     app.config.from_object(Config)
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
     db.init_app(app)
 
     from .views import views
@@ -29,6 +32,9 @@ def create_app():
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
+
+    admin = Admin(app)
+    admin.add_view(ModelView(User, db.session))
 
     @login_manager.user_loader
     def load_user(id):
