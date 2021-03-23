@@ -37,10 +37,19 @@ def delete_note():
     return jsonify({})
 
 
-@views.route('/edit-note', methods=['POST', 'GET'])
+# TODO Fix function
+@views.route('/edit-note', methods=['GET'])
 def edit_note():
-
-    return render_template('edit_note.html', user=current_user)
+    note = json.loads(request.data)
+    noteId = note['noteId']
+    note = Note.query.get(noteId)
+    # if note:
+    #     if note.user_id == current_user.id:
+    #         content = note.content
+    #
+    #         return render_template('edit_note.html', user=current_user,
+    #                        content=content)
+    return jsonify({})
 
 
 @views.route('/user-list', methods=['GET', 'POST'])

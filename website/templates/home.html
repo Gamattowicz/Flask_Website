@@ -22,7 +22,7 @@
                 <td class="border border-dark">{{ note.content }}</td>
                 <td class="border border-dark">{{ note.date }}</td>
                 <td class="border border-dark text-center">
-                    <button type="button" class="btn btn-outline-success" href="/edit-note">
+                    <button type="button" class="btn btn-outline-success" onClick="editNote({{ note.id }})">
                     <span aria-hidden="true">EDIT</span></button></td>
                 <td class="border border-dark">
                     <button type="button" class="close text-danger" onClick="deleteNote({{ note.id }})">

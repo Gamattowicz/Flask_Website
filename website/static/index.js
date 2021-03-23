@@ -7,6 +7,15 @@ function deleteNote(noteId) {
   });
 }
 
+function editNote(noteId) {
+  fetch("/edit-note", {
+    method: "GET",
+    body: JSON.stringify({ noteId: noteId }),
+  }).then((_res) => {
+    window.location.href = "/edit-note";
+  });
+}
+
 function deleteUser(userId) {
   fetch("/delete-user", {
     method: "POST",
